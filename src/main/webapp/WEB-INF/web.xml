@@ -11,4 +11,49 @@
         <servlet-name>AllBooks</servlet-name>
         <url-pattern>/all-books</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddNewAuthor</servlet-name>
+        <jsp-file>/addNewAuthor.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddNewAuthor</servlet-name>
+        <url-pattern>/add-new-author</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddNewBook</servlet-name>
+        <jsp-file>/addNewBook.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddNewBook</servlet-name>
+        <url-pattern>/add-new-book</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterOfBooks</servlet-name>
+        <jsp-file>/registerOfBooks.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterOfBooks</servlet-name>
+        <url-pattern>/register-of-books</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <jsp-file>/login.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <jsp-file>/register.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
 </web-app>

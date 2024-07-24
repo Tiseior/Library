@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Config {
-    private static Connection connection = null;
     private static final String dbURL = "jdbc:postgresql://localhost:5432/library";
     private static final String user = "postgres";
     private static final String password = "postgres";
@@ -15,6 +14,7 @@ public class Config {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+        Connection connection = null;
         try {
             connection = DriverManager.getConnection(dbURL, user, password);
         } catch (SQLException e) {

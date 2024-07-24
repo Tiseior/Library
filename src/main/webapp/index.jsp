@@ -1,3 +1,4 @@
+<%@ page import="entities.User" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -5,18 +6,25 @@
   <title>Zakladok.net</title>
 </head>
 <body>
+<%
+  User user = (User) session.getAttribute("user");
+  String thisUser;
+  if(user == null) {
+    thisUser = "Guest";
+  } else {
+    thisUser = user.getName();
+  }
+%>
 <h1>
-  Welcome to the library
+  <%= thisUser %>, welcome to the library
   <br>
   Zakladok.net
 </h1>
 <br/>
 <a href="all-books">All books</a>
 <br>
-<a href="addNewAuthor.jsp">Add new author</a>
+<a href="register-of-books">Register of books</a>
 <br>
-<a href="addNewBook.jsp">Add new book</a>
-<br>
-<a href="addBooks.jsp">Add books</a>
+<a href="login.jsp">Login</a>
 </body>
 </html>

@@ -11,7 +11,7 @@
 <h1>Books in library</h1>
 <p>
     <form action="index.jsp">
-        <input type="submit" value="Back"/>
+        <input type="submit" value="Back to menu"/>
     </form>
 </p>
 <table border="1" style="text-align: center; width: 50%">
@@ -28,7 +28,7 @@
                 "SELECT book_id, title, name, quantity FROM books, authors WHERE books.author = authors.author_id ORDER BY book_id");
         while (rs.next()) {
             if(rs.getInt("quantity") > 0) {
-                out.println("<form action=\"take-book\" method=\"post\">");
+                out.println("<form action=\"take-book-servlet\" method=\"post\">");
                 out.println("<tr>");
                 out.println("<td>" + rs.getString("title") + "</td>");
                 out.println("<td>" + rs.getString("name") + "</td>");

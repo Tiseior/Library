@@ -10,11 +10,11 @@
 <body>
 <h1>Add new book</h1>
 <p>
-<form action="index.jsp">
-    <input type="submit" value="Back"/>
+<form action="register-of-books">
+    <input type="submit" value="Back to registry"/>
 </form>
 </p>
-<form action="add-new-book" method="post">
+<form action="add-new-book-servlet" method="post">
     <table>
     <tr>
         <td>Title:</td>

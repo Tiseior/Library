@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-@WebServlet(name = "TakeBook", value = "/take-book")
-public class takeBookServlet extends HttpServlet {
+@WebServlet(name = "TakeBookServlet", value = "/take-book-servlet")
+public class TakeBookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
