@@ -15,7 +15,7 @@ import java.sql.SQLException;
 @WebServlet(name = "LoginToAccount", value = "/login-to-account")
 public class LoginToAccount extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             PreparedStatement preparedStatement = Config.getConnection().prepareStatement(
                     "SELECT * FROM users WHERE login = ? AND (password = crypt(?, password))");

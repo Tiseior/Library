@@ -8,6 +8,7 @@ public class Config {
     private static final String dbURL = "jdbc:postgresql://localhost:5432/library";
     private static final String user = "postgres";
     private static final String password = "postgres";
+    private Config() {}
     public static Connection getConnection() {
         try {
             Class.forName("org.postgresql.Driver");

@@ -25,6 +25,13 @@
 <br>
 <a href="register-of-books">Register of books</a>
 <br>
-<a href="login.jsp">Login</a>
+<%
+  if(user == null)
+    out.println("<a href=\"login\">Login</a>");
+  else if(user.getAccess().equals("admin"))
+    out.println("<a href=\"admin-account\">Admin account</a>");
+  else if(user.getAccess().equals("user"))
+    out.println("<a href=\"user-account\">My account</a>");
+%>
 </body>
 </html>

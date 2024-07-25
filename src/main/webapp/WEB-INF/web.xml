@@ -56,4 +56,22 @@
         <servlet-name>Register</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserAccount</servlet-name>
+        <jsp-file>/userAccount.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserAccount</servlet-name>
+        <url-pattern>/user-account</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminAccount</servlet-name>
+        <jsp-file>/adminAccount.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminAccount</servlet-name>
+        <url-pattern>/admin-account</url-pattern>
+    </servlet-mapping>
 </web-app>
