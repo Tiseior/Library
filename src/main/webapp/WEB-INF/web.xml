@@ -74,4 +74,13 @@
         <servlet-name>AdminAccount</servlet-name>
         <url-pattern>/admin-account</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AllUsers</servlet-name>
+        <jsp-file>/allUsers.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllUsers</servlet-name>
+        <url-pattern>/all-users</url-pattern>
+    </servlet-mapping>
 </web-app>
