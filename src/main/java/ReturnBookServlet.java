@@ -5,30 +5,34 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-@WebServlet(name = "TakeBookServlet", value = "/take-book-servlet")
-public class TakeBookServlet extends HttpServlet {
+@WebServlet(name = "ReturnBookServlet", value = "/return-book-servlet")
+public class ReturnBookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
+            Statement statement = Config.getConnection().createStatement();
+            ResultSet rs = statement.executeQuery(
+                    "SELECT user_id, o.book_id, quantity " +
+                            "FROM orders o INNER JOIN books b on b.book_id = o.book_id " +
+                            "WHERE order_id = " + request.getParameter("order_id") + ";");
+            rs.next();
+
             PreparedStatement preparedStatement = Config.getConnection().prepareStatement(
-                    "UPDATE books SET quantity=? WHERE book_id=?");
-            preparedStatement.setInt(1, (Integer.parseInt(request.getParameter("quantity")) - 1));
-            preparedStatement.setInt(2, Integer.parseInt(request.getParameter("book_id")));
+                    "UPDATE books SET quantity=? WHERE book_id = ?;");
+            preparedStatement.setInt(1, (rs.getInt("quantity") + 1));
+            preparedStatement.setInt(2, rs.getInt("book_id"));
             preparedStatement.executeUpdate();
 
-            HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
             preparedStatement = Config.getConnection().prepareStatement(
-                    "INSERT INTO orders (user_id, book_id, status) VALUES (?, ?, ?)");
-            preparedStatement.setInt(1, user.getId());
-            preparedStatement.setInt(2, Integer.parseInt(request.getParameter("book_id")));
-            preparedStatement.setString(3, "Taken");
+                    "UPDATE orders SET status = 'Returned' WHERE order_id = ?;");
+            preparedStatement.setInt(1, Integer.parseInt(request.getParameter("order_id")));
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {

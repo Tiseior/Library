@@ -74,4 +74,13 @@
         <servlet-name>AdminAccount</servlet-name>
         <url-pattern>/admin-account</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TakeBook</servlet-name>
+        <jsp-file>/takeBook.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TakeBook</servlet-name>
+        <url-pattern>/take-book</url-pattern>
+    </servlet-mapping>
 </web-app>
