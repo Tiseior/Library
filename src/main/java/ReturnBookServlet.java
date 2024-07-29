@@ -31,8 +31,19 @@ public class ReturnBookServlet extends HttpServlet {
             preparedStatement.executeUpdate();
 
             preparedStatement = Config.getConnection().prepareStatement(
-                    "UPDATE orders SET status = 'Returned' WHERE order_id = ?;");
+                    "INSERT INTO orders (user_id, book_id, status, order_link) VALUES (?, ?, ?, ?);");
+            preparedStatement.setInt(1, rs.getInt("user_id"));
+            preparedStatement.setInt(2, rs.getInt("book_id"));
+            preparedStatement.setString(3, "Returned");
+            preparedStatement.setInt(4, Integer.parseInt(request.getParameter("order_id")));
+            preparedStatement.executeUpdate();
+
+            preparedStatement = Config.getConnection().prepareStatement(
+                    "UPDATE orders SET order_link = " +
+                            "(SELECT order_id FROM orders WHERE order_link = ? AND status = 'Returned') " +
+                            "WHERE order_id = ?;");
             preparedStatement.setInt(1, Integer.parseInt(request.getParameter("order_id")));
+            preparedStatement.setInt(2, Integer.parseInt(request.getParameter("order_id")));
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {

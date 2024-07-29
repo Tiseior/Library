@@ -83,4 +83,13 @@
         <servlet-name>TakeBook</servlet-name>
         <url-pattern>/take-book</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HistoryOfOrders</servlet-name>
+        <jsp-file>/historyOfOrders.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HistoryOfOrders</servlet-name>
+        <url-pattern>/history-of-orders</url-pattern>
+    </servlet-mapping>
 </web-app>
