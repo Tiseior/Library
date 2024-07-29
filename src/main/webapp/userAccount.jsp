@@ -2,13 +2,7 @@
 <%@ page import="java.sql.Statement" %>
 <%@ page import="config.Config" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="java.sql.ResultSet" %><%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 25.07.2024
-  Time: 12:28
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -40,7 +34,7 @@
         try {
             Statement statement = Config.getConnection().createStatement();
             ResultSet rs = statement.executeQuery("SELECT count(*) FROM orders " +
-                                        "WHERE user_id = " + user.getId() + ";");
+                                        "WHERE user_id = " + user.getId() + " AND status = 'Taken' AND order_link IS NULL;");
             rs.next();
             if(rs.getInt("count") == 0)
                 out.println("<h2>You don't have any books now!</h2>");

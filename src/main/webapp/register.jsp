@@ -1,16 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 24.07.2024
-  Time: 17:24
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Registration</title>
 </head>
 <body>
+<p>
+<form action="index.jsp">
+  <input type="submit" value="Back to menu"/>
+</form>
+</p>
 <h1>Register in Zakladok.net</h1>
 <form action="add-user-servlet" method="post">
   <table>

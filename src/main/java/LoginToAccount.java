@@ -18,7 +18,8 @@ public class LoginToAccount extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             PreparedStatement preparedStatement = Config.getConnection().prepareStatement(
-                    "SELECT * FROM users WHERE login = ? AND (password = crypt(?, password))");
+                    "SELECT * FROM users WHERE login = ? AND (password = crypt(?, password)) " +
+                            "AND access <> 'blocked'");
             preparedStatement.setString(1, request.getParameter("email"));
             preparedStatement.setString(2, request.getParameter("password"));
             ResultSet rs = preparedStatement.executeQuery();
