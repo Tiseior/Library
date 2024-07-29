@@ -23,8 +23,6 @@
 <br/>
 <a href="all-books">All books</a>
 <br>
-<a href="register-of-books">Register of books</a>
-<br>
 <%
   if(user == null)
     out.println("<a href=\"login\">Login</a>");

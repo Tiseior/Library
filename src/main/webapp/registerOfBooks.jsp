@@ -5,13 +5,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Zakladok.net</title>
+    <title>Admin Zakladok.net</title>
 </head>
 <body>
 <h1>Register of Books</h1>
 <p>
-<form action="index.jsp">
-    <input type="submit" value="Back to menu"/>
+<form action="admin-account">
+    <input type="submit" value="Back to account"/>
 </form>
 </p>
 <p>

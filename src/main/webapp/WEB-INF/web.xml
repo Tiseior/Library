@@ -92,4 +92,13 @@
         <servlet-name>HistoryOfOrders</servlet-name>
         <url-pattern>/history-of-orders</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AllUsers</servlet-name>
+        <jsp-file>/allUsers.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllUsers</servlet-name>
+        <url-pattern>/all-users</url-pattern>
+    </servlet-mapping>
 </web-app>
