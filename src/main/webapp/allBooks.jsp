@@ -31,7 +31,7 @@
         while (rs.next()) {
             if(rs.getInt("quantity") > 0) {
                 if(user != null && user.getAccess().equals("user"))
-                    out.println("<form action=\"take-book-servlet\" method=\"post\">");
+                    out.println("<form action=\"take-book\">");
                 else
                     out.println("<form action=\"login\">");
                 out.println("<tr>");
