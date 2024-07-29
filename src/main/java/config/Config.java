@@ -7,21 +7,22 @@ public class Config {
     private static final String user = "postgres";
     private static final String password = "postgres";
     private static Connection connection = null;
+
     private Config() {}
+
     public static Connection getConnection() {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        if(connection == null) {
+        if (connection == null) {
             try {
                 connection = DriverManager.getConnection(dbURL, user, password);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
             fillDB();
-            System.out.println("Lol");
         }
         return connection;
     }
@@ -29,10 +30,11 @@ public class Config {
     private static void fillDB() {
         try {
             DatabaseMetaData metaData = connection.getMetaData();
-            ResultSet rs = metaData.getTables(null, null, "orders", new String[] {"TABLE"});
-            if(!rs.next()) {
+            ResultSet rs = metaData.getTables(null, null, "orders", new String[]{"TABLE"});
+            if (!rs.next()) {
                 createTables();
                 fillTables();
+                System.out.println("All tables are created and filled!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -65,7 +67,7 @@ public class Config {
             statement.executeUpdate(sql.toString());
             sql.setLength(0);
             sql.append("CREATE TABLE IF NOT EXISTS orders (order_id serial PRIMARY KEY, user_id integer not null, ");
-            sql.append("book_id integer not null, date timestamptz DEFAULT now(), status varchar(20) not null, ");
+            sql.append("book_id integer not null, date timestamptz DEFAULT now(), status varchar(20) not null, order_link integer, ");
             sql.append("CONSTRAINT orders_users_fkey FOREIGN KEY (user_id) REFERENCES users (user_id), ");
             sql.append("CONSTRAINT orders_books_fkey FOREIGN KEY (book_id) REFERENCES books (book_id), ");
             sql.append("CONSTRAINT orders_statuses_fkey FOREIGN KEY (status) REFERENCES order_statuses (status_id));");
